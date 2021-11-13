@@ -1,10 +1,29 @@
-# cssrj
-only for cssrj's mobius_web_app
+# nCube-MUV
+Start Guide
 
+### Install dependencies
+```
+$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
+$ sudo apt-get install -y nodejs
 
+$ node -v
 
+$ sudo npm install -g pm2
 
+$ git clone https://github.com/IoTKETI/nCube-MUV
 
-You need to use this .sh to autometic
-![image](https://user-images.githubusercontent.com/79128042/141661443-19c470c9-1ab0-4cac-a15c-47cad55d8bbe.png)
+$ cd /home/pi/nCube-MUV
+
+$ npm install
+```
+
+### Install MQTT-broker
+```
+$ wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+$ sudo apt-key add mosquitto-repo.gpg.key
+$ cd /etc/apt/sources.list.d/
+$ sudo wget http://repo.mosquitto.org/debian/mosquitto-buster.list 
+$ sudo apt-get update
+$ sudo apt-get install -y mosquitto
+```
