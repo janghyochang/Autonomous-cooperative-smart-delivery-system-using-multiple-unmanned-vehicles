@@ -23,7 +23,7 @@ global.req_topic = '/oneM2M/req/'+conf.ae.id+conf.cse.id+'/'+conf.ae.bodytype;
 
 var reg_resp_topic = '/oneM2M/reg_resp/'+conf.ae.id+'/+/#';
 var resp_topic = '/oneM2M/resp/'+conf.ae.id+'/+/#';
-var noti_topic = '/oneM2M/req/+/go_sub/#';
+var noti_topic = '/oneM2M/req/+/call_turtlebot_sub/#';
 
 global.sh_adn = require('./mqtt_adn');
 var noti = require('./noti');
@@ -115,14 +115,14 @@ function mqtt_message_handler(topic, message) {
     var request = require('request');
     var options = {
     'method': 'POST',
-    'url': 'http://203.253.128.161:7579/Mobius/cssrj/Turtlebot',
+    'url': 'http://203.253.128.161:7579/Mobius/cssrj/Drone_station',
     'headers': {
         'Accept': 'application/json',
         'X-M2M-RI': '12345',
         'X-M2M-Origin': '{{aei}}',
         'Content-Type': 'application/vnd.onem2m-res+json; ty=4'
     },
-    body: '{\n    "m2m:cin": {\n        "con": "arrive"\n    }\n}'
+    body: '{\n    "m2m:cin": {\n        "con": "going"\n    }\n}'
 
     };
     request(options, function (error, response) {
