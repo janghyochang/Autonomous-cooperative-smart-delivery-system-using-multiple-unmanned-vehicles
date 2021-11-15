@@ -50,6 +50,7 @@ while(1):
   response = requests.request("GET", url, headers=headers, data=payload)
   new_json=response.json()
   res=new_json["m2m:cin"]['con']
+    
   if res == 'Open Station':
     print('Open Station')
     GPIO.output(IN1,GPIO.HIGH) #모터 돌아가기
@@ -60,6 +61,23 @@ while(1):
     time.sleep(1000)
   else:    
     print(res)
+    
+import requests
+
+url = "http://203.253.128.161:7579/Mobius/cssrj/Turtlebot/Turtlebot_2"
+
+payload = "{\n    \"m2m:cin\": {\n        \"con\": \"call Turtlebot\"\n    }\n}"
+headers = {
+  'Accept': 'application/json',
+  'X-M2M-RI': '12345',
+  'X-M2M-Origin': 'SvDC-OKNlPS',
+  'Content-Type': 'application/vnd.onem2m-res+json; ty=4'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
 
 pwm_ENA.stop()
 pwm_ENB.stop()
