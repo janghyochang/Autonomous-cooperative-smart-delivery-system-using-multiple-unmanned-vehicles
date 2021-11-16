@@ -1,9 +1,40 @@
+# Project Outline
 ![image](https://user-images.githubusercontent.com/79128042/141941607-d4eaae8f-a0de-435f-97a4-c6f351dc148a.png)
 
+These days, most people want to receive a package by non-face-to-face delivery because of the COVID-19. In addition, the conflict between the courier and the recipient is getting worse day by day. Exhaust gases generated during delivery can cause environmental pollution. As the problem of delivery intensifies, the demand for unmanned delivery systems is increasing.
 
+Therefore, we decided to implement an unmanned delivery system by using drones and turtlebots that can help our society.
+![image](https://user-images.githubusercontent.com/79128042/141941892-f20d8ae9-4dec-48fe-b422-418e62e884cf.png)
 
+While implementing delivery as an unmanned system, users can obtain real-time information on the transportation situation of drones and turtlebots through Mobius servers.
 
+In addition to turtlebots and drones, we have implemented IoT devices using raspberry pi in elevators and drone stations so that they can actually run services.
 
+# Prerequisites (Framework / module )
+- Mobius Server (Rental or installation)
+- nCube Thyme, nCube MUV
+- ROS 1 (SLAM, NAVIGATION)
+- OpenCV(Color detection)
+- Haar(Face recognition)
+
+# Prerequisites (Hardware / self-made)
+
+- Drone x 1
+- Turtlebot3 waffle x 1
+- Drone Station
+![image](https://user-images.githubusercontent.com/79128042/141942444-abc3a6e0-f706-4249-916c-09baebe7e0cf.png)
+![image](https://user-images.githubusercontent.com/79128042/141942500-fafad351-4a37-4acd-b57f-7af0dbe7d143.png)
+We have created a station that facilitates the exchange of goods between drones and turtlebots. The DC motor in the station operates through communication with the Mobius server and opens and closes the door when the drone arrives.
+
+The important point at this time is that you have to make a slope at the entrance of the station so that the delivery robot can go inside and pick up the goods using the robot arm.
+
+- Drone Carrier 
+A space not to touch the floor at the bottom of the drone was set as a space to store goods. The electromagnet was installed because the electromagnet module was installed to arrive at the target position and the voltage was not applied to the electromagnet when the power was turned off.
+
+- Physical button (EV)
+![image](https://user-images.githubusercontent.com/79128042/141942708-1ca24e37-e31a-450f-964b-1a186a29248f.png)
+
+The ideal system is to operate the elevator directly, but given the realistic conditions, we could complete our project if we could install only one physical button. Therefore, a physical button with a camera module and a servo motor was created. The camera module operates the servo motor according to the lighting status of a specific floor within the elevator and sends commands to the Mobius server to help the turtle bot drive autonomously.
 
 
 
