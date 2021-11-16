@@ -55,37 +55,63 @@ The information is delivered to drones, drone stations, elevators, and delivery 
 ![image](https://user-images.githubusercontent.com/79128042/141943667-61bd00dc-1617-4a93-92f4-f149d4601d11.png)
 
 # Our Mobius System
+Step 1) We provide these functons by using Vue.js
+- Sign up / Sign in
+- realtime monitor the shippment state using Kakaomap API
+
 ![image](https://user-images.githubusercontent.com/79128042/141946648-d103475e-78ba-40fc-95fe-2ac80556134d.png)
 
 ![image](https://user-images.githubusercontent.com/79128042/141946705-8026e4f1-4047-417e-ac7e-9b1c53ccccf8.png)
 
+![image](https://user-images.githubusercontent.com/79128042/141947563-1cc1306f-e499-4392-b471-030bcd0760c2.png)
 
-# nCube-MUV
-Start Guide
 
-### Install dependencies
-```
-$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+Step 2) We are using nCube MUV to show Drone's battery state, GPS, velocity and so on
 
-$ sudo apt-get install -y nodejs
+![image](https://user-images.githubusercontent.com/79128042/141947671-0e9b45be-1de7-4737-b1b2-e59f2d7d7bbb.png)
+We can set the origin and destination to set the waypoint and control the drone through mavlink. The drones moved in this way aim to land at the station.
 
-$ node -v
+We used nCube MUV to use drone status information and GPS information. As the information is delivered, it is transmitted to the Mobius server in real time and communicates with the web and station through the data to bring in a turtlebot in a state where driving inside the building is possible. We tried to implement the precision landing of the drone as a challenge, but this part was not successful.
 
-$ sudo npm install -g pm2
+Step 3) Turtlebot / Elevator Physical Button
 
-$ git clone https://github.com/IoTKETI/nCube-MUV
+![image](https://user-images.githubusercontent.com/79128042/141948065-a59ab865-b45a-4487-a988-d42680af1f1f.png)
 
-$ cd /home/pi/nCube-MUV
+What is essential for the driving of the delivery robot is the result of the slam in the building. This consists of two image files and yaml files and coincides with the starting point of the delivery robot to start driving. This presupposes that the building is located in the building through a slam in advance.
 
-$ npm install
-```
+![image](https://user-images.githubusercontent.com/79128042/141948121-1fe7e19b-17b4-4be0-ac77-c99640897c78.png)
 
-### Install MQTT-broker
-```
-$ wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
-$ sudo apt-key add mosquitto-repo.gpg.key
-$ cd /etc/apt/sources.list.d/
-$ sudo wget http://repo.mosquitto.org/debian/mosquitto-buster.list 
-$ sudo apt-get update
-$ sudo apt-get install -y mosquitto
+It is the navigation part of the building that runs autonomously. Using the map provided through the slam, it's LiDAR. Through the sensor, the driving is started by calculating the part that matches the map stochastically.
+
+![image](https://user-images.githubusercontent.com/79128042/141948252-85c4ec9f-09f0-41d4-b0b4-aa8c76d97bf1.png)
+
+The moving delivery robot arrives at the elevator in the building and sends a signal to the Mobius server to use the elevator. Delivery in high-rise buildings can also be carried out without difficulty.
+
+![image](https://user-images.githubusercontent.com/79128042/141948314-66fb1b30-4d92-4690-bf4b-fb12b08f2a1d.png)
+
+Physical buttons that depend on the inside and outside determine whether to operate the servo motor according to the lighting state of the button. This result is sometimes given or received commands from the Mobius server.
+
+Both the SLAM and NAVIGATION functions of ROS are far from the words unmanned and autonomous in that nodes must be executed one by one at the terminal. Therefore, we made this part autonomous by processing it with shell(.sh).
+
+Step 4) Face Recognition
+
+![image](https://user-images.githubusercontent.com/79128042/141948373-ff7b343a-1dbe-4528-9ad7-f2e5b451409b.png)
+
+The corresponding driving robot reaches the target layer and performs autonomous driving to the destination based on the map in the target layer. The turtlebot arrives at the user and recognizes the face through the camera module.
+
+![image](https://user-images.githubusercontent.com/79128042/141948443-9448f4de-b68e-45f4-973b-bdac267b0e7c.png)
+
+Photos of recipients received from users on the web are stored in the Mobius server. The server learns a face with the stored photo dataset. The learning model is also stored in the server. When the turtlebot autonomously drives and arrives at the recipient's place, it recognizes people's faces through OpenCV and delivers packages if the recipient is correct.
+
+# Our Full scenario demo Video
+
+https://youtu.be/D0m_2dkOxs8
+
+# More Detail
+
+- hackster.io
+https://www.hackster.io/cssrj/onem2m-autonomous-cooperative-smart-delivery-system-7040d6
+
+- AISL LaB
+http://aisl.sejong.ac.kr/
 ```
