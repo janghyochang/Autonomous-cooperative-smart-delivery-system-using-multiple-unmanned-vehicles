@@ -41,7 +41,9 @@ A space not to touch the floor at the bottom of the drone was set as a space to 
 
 The ideal system is to operate the elevator directly, but given the realistic conditions, we could complete our project if we could install only one physical button. Therefore, a physical button with a camera module and a servo motor was created. The camera module operates the servo motor according to the lighting status of a specific floor within the elevator and sends commands to the Mobius server to help the turtle bot drive autonomously.
 
+# System Architecture
 
+![image](https://user-images.githubusercontent.com/79128042/141943276-b8b6469a-422b-4ae8-8ae6-5669dc19ba43.png)
 
 
 
