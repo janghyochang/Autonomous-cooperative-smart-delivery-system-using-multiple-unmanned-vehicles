@@ -20,8 +20,11 @@ In addition to turtlebots and drones, we have implemented IoT devices using rasp
 # Prerequisites (Hardware / self-made)
 
 - Drone x 1
+
 - Turtlebot3 waffle x 1
+
 - Drone Station
+
 ![image](https://user-images.githubusercontent.com/79128042/141942444-abc3a6e0-f706-4249-916c-09baebe7e0cf.png)
 
 ![image](https://user-images.githubusercontent.com/79128042/141942500-fafad351-4a37-4acd-b57f-7af0dbe7d143.png)
