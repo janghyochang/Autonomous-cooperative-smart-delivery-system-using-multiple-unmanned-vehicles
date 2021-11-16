@@ -45,6 +45,11 @@ The ideal system is to operate the elevator directly, but given the realistic co
 
 ![image](https://user-images.githubusercontent.com/79128042/141943276-b8b6469a-422b-4ae8-8ae6-5669dc19ba43.png)
 
+Basically, our system is aimed at unmanned systems. Therefore, if the existing member information is included in the face information of the person who wants to receive additional delivery, the information will be sent to the Mobius server through base64 encoding.
+
+The information is delivered to drones, drone stations, elevators, and delivery robots during delivery. Each piece of information is used through the mqtt communication method and we made a demo video using one school building.
+
+![image](https://user-images.githubusercontent.com/79128042/141943667-61bd00dc-1617-4a93-92f4-f149d4601d11.png)
 
 
 # nCube-MUV
